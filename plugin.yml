@@ -29,3 +29,5 @@ commands:
     description: Toggles the possibility of death rain.
   changerain:
     description: Changes the status of the current rain.
+  fragbow:
+    description: Changes a bow to a FragBow.

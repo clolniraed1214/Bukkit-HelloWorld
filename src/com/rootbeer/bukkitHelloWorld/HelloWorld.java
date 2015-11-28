@@ -75,6 +75,7 @@ public class HelloWorld extends JavaPlugin {
 		getCommand("arrowexp").setExecutor(new ArrowExplode(this));
 		getCommand("allowrain").setExecutor(new AllowRain(this, deathRain));
 		getCommand("changerain").setExecutor(new ChangeRain(deathRain));
+		getCommand("fragbow").setExecutor(new FragmentationBow());
 	}
 
 	private void registerEvents() {

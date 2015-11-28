@@ -47,7 +47,7 @@ public class DeathRainWeather {
 	private void loop() {
 		Bukkit.getScheduler().scheduleSyncDelayedTask(plugin, new Runnable() {
 			public void run() {
-				if (isRaining()) {
+				if (isRaining() && doRain()) {
 					getThis().loop();
 				}
 			}
@@ -57,7 +57,7 @@ public class DeathRainWeather {
 		Chunk[] chunks = world.getLoadedChunks();
 
 		for (Chunk chunk : chunks) {
-			for (int i = 0; i < rainWeight; i++) {
+			for (int i = 0; i < (rainWeight); i++) {
 				if (Math.random() >= .998) {
 					int randX = (int) (Math.random() * 16);
 					int randZ = (int) (Math.random() * 16);

@@ -42,6 +42,7 @@ public class FragmentationBow implements CommandExecutor {
 		fragBowMeta.setDisplayName(ChatColor.BLUE + "Fragmentation Bow");
 		
 		fragBow.setItemMeta(fragBowMeta);
+		fragBow.setDurability((short) 394);
 		
 		ShapedRecipe recipe = new ShapedRecipe(fragBow).shape("AAA", "ABA", "AAA");
 		recipe.setIngredient('A', Material.ARROW);

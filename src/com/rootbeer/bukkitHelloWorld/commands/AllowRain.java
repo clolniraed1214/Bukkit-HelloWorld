@@ -24,6 +24,7 @@ public class AllowRain implements CommandExecutor {
 			sender.sendMessage("Death Rain Enabled");
 		} else if (Boolean.getBoolean(args[0])) {
 			deathRain.setDoRain(false);
+			deathRain.setRaining(false);
 			sender.sendMessage("Death Rain Disabled");
 			deathRain.endRain();
 		}

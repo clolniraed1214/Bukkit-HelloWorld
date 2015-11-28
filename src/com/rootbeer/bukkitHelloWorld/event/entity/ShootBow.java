@@ -68,6 +68,8 @@ public class ShootBow implements Listener {
 			tnt.setFuseTicks(115);
 			
 			projectile.remove();
+		} else if (bowMeta.getDisplayName().equals(ChatColor.BLUE + "Fragmentation Bow")) {
+			arrow.setMetadata("fragArrow", new FixedMetadataValue(plugin, "true"));
 		}
 	}
 }

@@ -16,6 +16,7 @@ import com.rootbeer.bukkitHelloWorld.commands.ChangeRain;
 import com.rootbeer.bukkitHelloWorld.commands.CreeperGun;
 import com.rootbeer.bukkitHelloWorld.commands.DeathRain;
 import com.rootbeer.bukkitHelloWorld.commands.Equip;
+import com.rootbeer.bukkitHelloWorld.commands.FragmentationBow;
 import com.rootbeer.bukkitHelloWorld.commands.GetBombBow;
 import com.rootbeer.bukkitHelloWorld.commands.Hello;
 import com.rootbeer.bukkitHelloWorld.commands.Info;
@@ -102,5 +103,6 @@ public class HelloWorld extends JavaPlugin {
 	private void registerRecipes() {
 		getServer().addRecipe(CreeperGun.getCreeperGunRecipe());
 		getServer().addRecipe(TNTGun.getTNTGunRecipe());
+		getServer().addRecipe(FragmentationBow.getFragBowRecipe());
 	}
 }

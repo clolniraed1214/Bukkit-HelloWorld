@@ -1,0 +1,12 @@
+# My Hello World Plugin for Bukkit (:D)
+# Version 0.1
+
+Server Admins:
+    - CreamyRootBeer
+    - Salted
+    - Notch
+
+Welcome Message: '&4Hello and welcome, %p'
+
+AllowRainOnLoad: true
+BroadcastOnChange: true

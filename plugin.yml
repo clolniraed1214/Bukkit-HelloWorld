@@ -1,0 +1,31 @@
+main: com.rootbeer.bukkitHelloWorld.HelloWorld
+version: 0.1
+name: BukkitHelloWorld
+
+commands:
+  hello:
+    description: Sends the player a nice message :D
+  menu:
+    description: Teleport Menu!
+  equip:
+    description: Equips the player with some items.
+  refill:
+    description: Refills the players stats.
+  info:
+    description: Views info about the server.
+  getbombbow:
+    description: Changes a bow into a bomb bow.
+  bombbow:
+    description: Changes the variance mode of a bomb bow.
+  deathrain:
+    description: Rains a ton of death. Seriously.
+  creepergun:
+    description: Creates a creepergun bow.
+  tntgun:
+    description: Creates a tntgun bow.
+  arrowexp:
+    description: Creates an explosion of arrows.
+  allowrain:
+    description: Toggles the possibility of death rain.
+  changerain:
+    description: Changes the status of the current rain.

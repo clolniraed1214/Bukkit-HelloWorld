@@ -9,7 +9,15 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.ProjectileHitEvent;
 
+import com.rootbeer.bukkitHelloWorld.HelloWorld;
+import com.rootbeer.bukkitHelloWorld.commands.ArrowExplode;
+
 public class ProjectileHit implements Listener {
+	
+	private HelloWorld plugin;
+	public ProjectileHit (HelloWorld pl) {
+		plugin = pl;
+	}
 	
 	@EventHandler
 	public void onProjectileHit(ProjectileHitEvent event) {
@@ -37,6 +45,8 @@ public class ProjectileHit implements Listener {
 				if (arrow.getMetadata("deleteOnHit").get(0).asBoolean()) {
 					arrow.remove();
 				}
+			} else if (arrow.hasMetadata("fragArrow")) {
+				ArrowExplode.arrowExplode(arrow.getLocation(), false, plugin);
 			}
 		}
 	}

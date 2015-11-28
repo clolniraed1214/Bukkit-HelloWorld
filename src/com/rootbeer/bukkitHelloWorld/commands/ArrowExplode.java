@@ -1,5 +1,6 @@
 package com.rootbeer.bukkitHelloWorld.commands;
 
+import org.bukkit.Location;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -7,6 +8,7 @@ import org.bukkit.entity.Arrow;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.metadata.FixedMetadataValue;
+import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.util.Vector;
 
 import com.rootbeer.bukkitHelloWorld.HelloWorld;
@@ -14,7 +16,7 @@ import com.rootbeer.bukkitHelloWorld.HelloWorld;
 public class ArrowExplode implements CommandExecutor {
 
 	static int SPEED = 3;
-	static int ARROWS_AT_BASE = 90;
+	static int ARROWS_AT_BASE = 70;
 
 	static double ARROW_SPACING = (2 * Math.PI * SPEED) / ARROWS_AT_BASE;
 	static double PITCH_INCREMENT = Math.toRadians(180 / (ARROWS_AT_BASE / 2));
@@ -30,6 +32,11 @@ public class ArrowExplode implements CommandExecutor {
 			return false;
 		Player player = (Player) sender;
 
+		arrowExplode(player.getLocation(), args.length > 0, plugin);
+		return false;
+	}
+	
+	public static void arrowExplode (Location center, boolean explode, JavaPlugin plugin) {
 		long arrows;
 		double diam;
 		double arrowSpace;
@@ -40,29 +47,27 @@ public class ArrowExplode implements CommandExecutor {
 			arrowSpace = Math.toRadians(360) / arrows;
 
 			for (int i = 0; i < arrows; i++) {
-				Arrow arrow = (Arrow) player.getWorld().spawnEntity(player.getLocation(), EntityType.ARROW);
+				Arrow arrow = (Arrow) center.getWorld().spawnEntity(center, EntityType.ARROW);
 				
 				Vector arrowVel = getVector(pitch, i * arrowSpace);
 
 				arrow.setVelocity(arrowVel);
 				
-				if (args.length > 0) {
+				if (explode) {
 					arrow.setMetadata("isBombArrow", new FixedMetadataValue(plugin, true));
 				}
 				arrow.setMetadata("deleteOnHit", new FixedMetadataValue(plugin, true));
 			}
 		}
-
-		return false;
 	}
 
-	private double getSphereDiam(double angle, int sphereRad) {
+	private static double getSphereDiam(double angle, int sphereRad) {
 		double rad = Math.cos(angle) * sphereRad;
 		double diam = 2 * Math.PI * rad;
 		return diam;
 	}
 	
-	private Vector getVector(double pitch, double yaw) {
+	private static Vector getVector(double pitch, double yaw) {
 		double yVel = SPEED * Math.sin(pitch);
 		double horVel = SPEED * Math.cos(pitch);
 		

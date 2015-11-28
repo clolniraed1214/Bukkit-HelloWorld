@@ -83,7 +83,7 @@ public class HelloWorld extends JavaPlugin {
 		pm.registerEvents(new PlayerChat(), this);
 		pm.registerEvents(new InventoryClick(), this);
 		pm.registerEvents(new PlayerJoin(), this);
-		pm.registerEvents(new ProjectileHit(), this);
+		pm.registerEvents(new ProjectileHit(this), this);
 		pm.registerEvents(new ShootBow(this), this);
 		pm.registerEvents(new WeatherChange(Bukkit.getWorlds().get(0), deathRain), this);
 	}

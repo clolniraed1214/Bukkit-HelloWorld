@@ -15,7 +15,7 @@ import com.rootbeer.bukkitHelloWorld.HelloWorld;
 
 public class ArrowExplode implements CommandExecutor {
 
-	static int SPEED = 2;
+	static int SPEED = 3;
 	static int ARROWS_AT_BASE = 70;
 
 	static double ARROW_SPACING = (2 * Math.PI * SPEED) / ARROWS_AT_BASE;

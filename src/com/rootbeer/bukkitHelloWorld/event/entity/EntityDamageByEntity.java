@@ -11,15 +11,15 @@ import org.bukkit.inventory.ItemStack;
 import com.rootbeer.bukkitHelloWorld.HelloWorld;
 import com.rootbeer.bukkitHelloWorld.commands.ArrowExplode;
 
-public class MobDamageByEntity implements Listener {
+public class EntityDamageByEntity implements Listener {
 	
 	private HelloWorld plugin;
-	public MobDamageByEntity (HelloWorld pl) {
+	public EntityDamageByEntity (HelloWorld pl) {
 		plugin = pl;
 	}
 	
 	@EventHandler
-	public void EntityDamageByEntity (EntityDamageByEntityEvent event) {
+	public void EntityHurtByEntity (EntityDamageByEntityEvent event) {
 		if (!(event.getEntity() instanceof Player)) return;
 		Player player = (Player) event.getEntity();
 		ItemStack playerChest = player.getInventory().getChestplate();

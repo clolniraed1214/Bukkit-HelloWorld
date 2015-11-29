@@ -29,8 +29,10 @@ import com.rootbeer.bukkitHelloWorld.event.inventory.InventoryClick;
 import com.rootbeer.bukkitHelloWorld.event.other.ProjectileHit;
 import com.rootbeer.bukkitHelloWorld.event.player.PlayerChat;
 import com.rootbeer.bukkitHelloWorld.event.player.PlayerJoin;
+import com.rootbeer.bukkitHelloWorld.event.player.RecognizeRecipe;
 import com.rootbeer.bukkitHelloWorld.event.weather.WeatherChange;
 import com.rootbeer.bukkitHelloWorld.other.DeathRainWeather;
+import com.rootbeer.bukkitHelloWorld.other.RecoilPlating;
 
 public class HelloWorld extends JavaPlugin {
 	DeathRainWeather deathRain;
@@ -88,6 +90,7 @@ public class HelloWorld extends JavaPlugin {
 		pm.registerEvents(new ProjectileHit(this), this);
 		pm.registerEvents(new ShootBow(this), this);
 		pm.registerEvents(new WeatherChange(Bukkit.getWorlds().get(0), deathRain), this);
+		pm.registerEvents(new RecognizeRecipe(), this);
 	}
 
 	private void registerConfig() {
@@ -105,5 +108,7 @@ public class HelloWorld extends JavaPlugin {
 		getServer().addRecipe(CreeperGun.getCreeperGunRecipe());
 		getServer().addRecipe(TNTGun.getTNTGunRecipe());
 		getServer().addRecipe(FragmentationBow.getFragBowRecipe());
+		getServer().addRecipe(RecoilPlating.getPlatingBookRecipe());
+		getServer().addRecipe(RecoilPlating.getPlatingRecipe());
 	}
 }

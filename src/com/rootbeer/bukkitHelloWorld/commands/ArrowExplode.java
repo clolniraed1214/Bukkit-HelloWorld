@@ -32,14 +32,18 @@ public class ArrowExplode implements CommandExecutor {
 			return false;
 		Player player = (Player) sender;
 
-		arrowExplode(player.getLocation(), args.length > 0, plugin);
+		arrowExplode(player.getLocation(), args.length > 0, plugin, true);
 		return false;
 	}
 	
-	public static void arrowExplode (Location center, boolean explode, JavaPlugin plugin) {
+	public static void arrowExplode (Location hitLoc, boolean explode, JavaPlugin plugin, boolean shiftUp) {
 		long arrows;
 		double diam;
 		double arrowSpace;
+		Location center = hitLoc; 
+		if (shiftUp) {
+			center = new Location(hitLoc.getWorld(), hitLoc.getX(), hitLoc.getY() + 3, hitLoc.getZ());
+		}
 
 		for (double pitch = Math.toRadians(-90); pitch <= Math.toRadians(90); pitch += PITCH_INCREMENT) {
 			diam = getSphereDiam(pitch, SPEED);

@@ -46,7 +46,7 @@ public class ProjectileHit implements Listener {
 					arrow.remove();
 				}
 			} else if (arrow.hasMetadata("fragArrow")) {
-				ArrowExplode.arrowExplode(arrow.getLocation(), false, plugin);
+				ArrowExplode.arrowExplode(arrow.getLocation(), false, plugin, false);
 			}
 		}
 	}

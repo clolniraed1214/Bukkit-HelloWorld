@@ -24,6 +24,7 @@ import com.rootbeer.bukkitHelloWorld.commands.Menu;
 import com.rootbeer.bukkitHelloWorld.commands.Refill;
 import com.rootbeer.bukkitHelloWorld.commands.TNTGun;
 import com.rootbeer.bukkitHelloWorld.event.block.BlockBreak;
+import com.rootbeer.bukkitHelloWorld.event.entity.MobDamageByEntity;
 import com.rootbeer.bukkitHelloWorld.event.entity.ShootBow;
 import com.rootbeer.bukkitHelloWorld.event.inventory.InventoryClick;
 import com.rootbeer.bukkitHelloWorld.event.other.ProjectileHit;
@@ -91,6 +92,7 @@ public class HelloWorld extends JavaPlugin {
 		pm.registerEvents(new ShootBow(this), this);
 		pm.registerEvents(new WeatherChange(Bukkit.getWorlds().get(0), deathRain), this);
 		pm.registerEvents(new RecognizeRecipe(), this);
+		pm.registerEvents(new MobDamageByEntity(this), this);
 	}
 
 	private void registerConfig() {

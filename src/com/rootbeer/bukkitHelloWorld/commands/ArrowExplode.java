@@ -32,11 +32,11 @@ public class ArrowExplode implements CommandExecutor {
 			return false;
 		Player player = (Player) sender;
 
-		arrowExplode(player.getLocation(), args.length > 0, plugin, true);
+		arrowExplode(player.getLocation(), args.length > 0, plugin, true, "");
 		return false;
 	}
 	
-	public static void arrowExplode (Location hitLoc, boolean explode, JavaPlugin plugin, boolean shiftUp) {
+	public static void arrowExplode (Location hitLoc, boolean explode, JavaPlugin plugin, boolean shiftUp, String owner) {
 		long arrows;
 		double diam;
 		double arrowSpace;
@@ -61,6 +61,7 @@ public class ArrowExplode implements CommandExecutor {
 					arrow.setMetadata("isBombArrow", new FixedMetadataValue(plugin, true));
 				}
 				arrow.setMetadata("deleteOnHit", new FixedMetadataValue(plugin, true));
+				arrow.setMetadata("owner", new FixedMetadataValue(plugin, owner));
 			}
 		}
 	}

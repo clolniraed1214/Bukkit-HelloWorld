@@ -10,3 +10,6 @@ Welcome Message: '&4Hello and welcome, %p'
 
 AllowRainOnLoad: true
 BroadcastOnChange: true
+
+Speed: 3.0
+Arrow Explode Density = 45

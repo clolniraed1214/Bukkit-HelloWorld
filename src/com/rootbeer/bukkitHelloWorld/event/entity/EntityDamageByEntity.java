@@ -33,11 +33,11 @@ public class EntityDamageByEntity implements Listener {
 					if (event.getDamager() instanceof Arrow) {
 						Arrow arrow = (Arrow) event.getDamager();
 						if (!arrow.hasMetadata("deleteOnHit")) {
-							ArrowExplode.arrowExplode(player.getLocation(), false, plugin, true,
+							ArrowExplode.arrowExplode(plugin, player.getLocation(), false, plugin, true,
 									player.getDisplayName(), true);
 						}
 					} else {
-						ArrowExplode.arrowExplode(player.getLocation(), false, plugin, true, player.getDisplayName(),
+						ArrowExplode.arrowExplode(plugin, player.getLocation(), false, plugin, true, player.getDisplayName(),
 								true);
 					}
 				}

@@ -16,15 +16,21 @@ import com.rootbeer.bukkitHelloWorld.lib.CommandDetails;
 
 public class ArrowExplode implements CommandExecutor {
 
-	static int SPEED = 3;
-	static int ARROWS_AT_BASE = 60;
-
-	static double ARROW_SPACING = (2 * Math.PI * SPEED) / ARROWS_AT_BASE;
-	static double PITCH_INCREMENT = Math.toRadians(180 / (ARROWS_AT_BASE / 2));
+	int SPEED;
+	int ARROWS_AT_BASE;
+	
+	double ARROW_SPACING;
+	double PITCH_INCREMENT;
 	HelloWorld plugin;
 
 	public ArrowExplode(HelloWorld pl) {
 		plugin = pl;
+		
+		SPEED = plugin.getConfig().getInt("SPEED");
+		ARROWS_AT_BASE = plugin.getConfig().getInt("Arrow Explode Density");
+		
+		ARROW_SPACING = (2 * Math.PI * SPEED) / ARROWS_AT_BASE;
+		PITCH_INCREMENT = Math.toRadians(180 / (ARROWS_AT_BASE / 2));
 	}
 
 	@Override
@@ -32,15 +38,24 @@ public class ArrowExplode implements CommandExecutor {
 		if (CommandDetails.failsPlayerCheck(sender)) return false;
 		Player player = (Player) sender;
 
-		arrowExplode(player.getLocation(), args.length > 0, plugin, true, "", false);
+		arrowExplode(plugin, player.getLocation(), args.length > 0, plugin, true, "", false);
 		return false;
 	}
 	
-	public static void arrowExplode (Location hitLoc, boolean explode, JavaPlugin plugin, boolean shiftUp, String owner, boolean highDamage) {
+	public static void arrowExplode (HelloWorld pl, Location hitLoc, boolean explode, JavaPlugin plugin, boolean shiftUp, String owner, boolean highDamage) {
 		long arrows;
 		double diam ;
 		double arrowSpace;
-		Location center = hitLoc; 
+		Location center = hitLoc;
+		
+		plugin = pl;
+		
+		double SPEED = plugin.getConfig().getDouble("Speed");
+		int ARROWS_AT_BASE = plugin.getConfig().getInt("Arrow Explode Density");
+		
+		double ARROW_SPACING = (2 * Math.PI * SPEED) / ARROWS_AT_BASE;
+		double PITCH_INCREMENT = Math.toRadians(180 / (ARROWS_AT_BASE / 2));
+		
 		if (shiftUp) {
 			center = new Location(hitLoc.getWorld(), hitLoc.getX(), hitLoc.getY() + 3, hitLoc.getZ());
 		}
@@ -53,7 +68,7 @@ public class ArrowExplode implements CommandExecutor {
 			for (int i = 0; i < arrows; i++) {
 				Arrow arrow = (Arrow) center.getWorld().spawnEntity(center, EntityType.ARROW);
 				
-				Vector arrowVel = getVector(pitch, i * arrowSpace);
+				Vector arrowVel = getVector(pitch, i * arrowSpace).multiply(SPEED);
 
 				arrow.setVelocity(arrowVel);
 				
@@ -70,15 +85,15 @@ public class ArrowExplode implements CommandExecutor {
 		}
 	}
 
-	private static double getSphereDiam(double angle, int sphereRad) {
+	private static double getSphereDiam(double angle, double sphereRad) {
 		double rad = Math.cos(angle) * sphereRad;
 		double diam = 2 * Math.PI * rad;
 		return diam;
 	}
 	
 	private static Vector getVector(double pitch, double yaw) {
-		double yVel = SPEED * Math.sin(pitch);
-		double horVel = SPEED * Math.cos(pitch);
+		double yVel = Math.sin(pitch);
+		double horVel = Math.cos(pitch);
 		
 		double xVel = horVel * Math.cos(yaw);
 		double zVel = horVel * Math.sin(yaw);

@@ -28,7 +28,14 @@ public class DeathRain implements CommandExecutor {
 		
 		if (Integer.parseInt(args[2]) > 20) {
 			if ((Integer.parseInt(args[2]) % 20) != 0) {
-				sender.sendMessage("Sorry, but if the freq is larger than 20,\n it must be a multiple of 20.");
+				sender.sendMessage("Sorry, but if the freq is larger than 20,\nit must be a multiple of 20.");
+				return false;
+			}
+		}
+		
+		if (Integer.parseInt(args[2]) < 20) {
+			if ((20 % Integer.parseInt(args[2])) != 0) {
+				sender.sendMessage("Sorry, but if the freq is less than 20,\nit must be a factor of 20");
 				return false;
 			}
 		}

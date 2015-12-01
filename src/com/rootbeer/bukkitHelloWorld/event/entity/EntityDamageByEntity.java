@@ -11,6 +11,10 @@ import org.bukkit.inventory.ItemStack;
 import com.rootbeer.bukkitHelloWorld.HelloWorld;
 import com.rootbeer.bukkitHelloWorld.commands.ArrowExplode;
 
+//===============================//
+// SERIOUS REFACTORING NECESSARY //
+//===============================//
+
 public class EntityDamageByEntity implements Listener {
 
 	private HelloWorld plugin;
@@ -38,14 +42,13 @@ public class EntityDamageByEntity implements Listener {
 					}
 				}
 			}
-			
+
 			if (event.getDamager() instanceof Arrow) {
 				Arrow arrow = (Arrow) event.getDamager();
 				if (arrow.hasMetadata("owner")) {
-					if (arrow.getMetadata("owner").get(0).equals(player.getDisplayName())) {
+					if (arrow.getMetadata("owner").get(0).asString().equalsIgnoreCase(player.getDisplayName())) {
 						event.setCancelled(true);
 						event.setDamage(0D);
-						player.sendMessage("You should not die");
 						return;
 					}
 				}

@@ -12,11 +12,12 @@ import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.util.Vector;
 
 import com.rootbeer.bukkitHelloWorld.HelloWorld;
+import com.rootbeer.bukkitHelloWorld.lib.CommandDetails;
 
 public class ArrowExplode implements CommandExecutor {
 
 	static int SPEED = 3;
-	static int ARROWS_AT_BASE = 90;
+	static int ARROWS_AT_BASE = 60;
 
 	static double ARROW_SPACING = (2 * Math.PI * SPEED) / ARROWS_AT_BASE;
 	static double PITCH_INCREMENT = Math.toRadians(180 / (ARROWS_AT_BASE / 2));
@@ -28,8 +29,7 @@ public class ArrowExplode implements CommandExecutor {
 
 	@Override
 	public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-		if (!(sender instanceof Player))
-			return false;
+		if (CommandDetails.failsPlayerCheck(sender)) return false;
 		Player player = (Player) sender;
 
 		arrowExplode(player.getLocation(), args.length > 0, plugin, true, "", false);

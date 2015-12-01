@@ -37,11 +37,11 @@ import com.rootbeer.bukkitHelloWorld.other.RecoilPlating;
 
 public class HelloWorld extends JavaPlugin {
 	DeathRainWeather deathRain;
-	
+
 	public void onEnable() {
 		PluginDescriptionFile pdfFile = getDescription();
 		Logger logger = getLogger();
-		
+
 		registerInstances();
 		registerCommands();
 		registerEvents();
@@ -58,7 +58,7 @@ public class HelloWorld extends JavaPlugin {
 
 		logger.info(pdfFile.getName() + " has been disabled.");
 	}
-	
+
 	private void registerInstances() {
 		World world = Bukkit.getWorlds().get(0);
 		deathRain = new DeathRainWeather(this, world);

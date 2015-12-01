@@ -16,7 +16,7 @@ import com.rootbeer.bukkitHelloWorld.HelloWorld;
 public class ArrowExplode implements CommandExecutor {
 
 	static int SPEED = 3;
-	static int ARROWS_AT_BASE = 90;
+	static int ARROWS_AT_BASE = 45;
 
 	static double ARROW_SPACING = (2 * Math.PI * SPEED) / ARROWS_AT_BASE;
 	static double PITCH_INCREMENT = Math.toRadians(180 / (ARROWS_AT_BASE / 2));

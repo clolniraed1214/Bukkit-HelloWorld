@@ -18,6 +18,7 @@ import com.rootbeer.bukkitHelloWorld.commands.DeathRain;
 import com.rootbeer.bukkitHelloWorld.commands.Equip;
 import com.rootbeer.bukkitHelloWorld.commands.FragmentationBow;
 import com.rootbeer.bukkitHelloWorld.commands.GetBombBow;
+import com.rootbeer.bukkitHelloWorld.commands.GetRecoilPlating;
 import com.rootbeer.bukkitHelloWorld.commands.Hello;
 import com.rootbeer.bukkitHelloWorld.commands.Info;
 import com.rootbeer.bukkitHelloWorld.commands.Menu;
@@ -79,6 +80,7 @@ public class HelloWorld extends JavaPlugin {
 		getCommand("allowrain").setExecutor(new AllowRain(this, deathRain));
 		getCommand("changerain").setExecutor(new ChangeRain(deathRain));
 		getCommand("fragbow").setExecutor(new FragmentationBow());
+		getCommand("recplating").setExecutor(new GetRecoilPlating());
 	}
 
 	private void registerEvents() {
